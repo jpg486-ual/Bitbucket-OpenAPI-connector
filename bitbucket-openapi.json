@@ -97,6 +97,116 @@
         }
       }
     },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}": {
+      "get": {
+        "summary": "Get issue details",
+        "operationId": "getIssueBB",
+        "tags": ["issue"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue details",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/attachments": {
+      "get": {
+        "summary": "List issue attachments",
+        "operationId": "listIssueAttachmentsBB",
+        "tags": ["issue", "attachment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue attachments",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/attachments/{path}": {
+      "get": {
+        "summary": "Get issue attachment",
+        "operationId": "getIssueAttachmentBB",
+        "tags": ["issue", "attachment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } },
+          { "name": "path", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue attachment",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/changes": {
+      "get": {
+        "summary": "List issue changes",
+        "operationId": "listIssueChangesBB",
+        "tags": ["issue", "change"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue changes",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/comments": {
+      "get": {
+        "summary": "List issue comments",
+        "operationId": "listIssueCommentsBB",
+        "tags": ["issue", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue comments",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/comments/{comment_id}": {
+      "get": {
+        "summary": "Get issue comment",
+        "operationId": "getIssueCommentBB",
+        "tags": ["issue", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } },
+          { "name": "comment_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue comment",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
     "/repositories/{workspace}/{repo_slug}/pipelines": {
       "get": {
         "summary": "List pipelines",
