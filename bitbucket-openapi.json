@@ -24,6 +24,7 @@
     "/user": {
       "get": {
         "summary": "Get current user info",
+        "operationId": "getCurrentUserBB",
         "tags": ["account"],
         "responses": {
           "200": {
@@ -36,6 +37,7 @@
     "/workspaces": {
       "get": {
         "summary": "List workspaces",
+        "operationId": "listWorkspacesBB",
         "tags": ["workspace"],
         "responses": {
           "200": {
@@ -48,6 +50,7 @@
     "/repositories/{workspace}": {
       "get": {
         "summary": "List repositories in a workspace",
+        "operationId": "listReposWorkspaceBB",
         "tags": ["repository"],
         "parameters": [
           { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } }
@@ -63,6 +66,7 @@
     "/repositories/{workspace}/{repo_slug}/pullrequests": {
       "get": {
         "summary": "List pull requests",
+        "operationId": "listPullRequestBB",
         "tags": ["pullrequest"],
         "parameters": [
           { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
@@ -79,6 +83,7 @@
     "/repositories/{workspace}/{repo_slug}/issues": {
       "get": {
         "summary": "List issues",
+        "operationId": "listIssuesBB",
         "tags": ["issue"],
         "parameters": [
           { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
@@ -96,6 +101,7 @@
       "get": {
         "summary": "List pipelines",
         "tags": ["pipeline"],
+        "operationId": "listPipelinesBB",
         "parameters": [
           { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
           { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
@@ -103,6 +109,41 @@
         "responses": {
           "200": {
             "description": "Pipelines",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commits": {
+      "get": {
+        "summary": "List commits in a repository",
+        "operationId": "getCommitsRepoBB",
+        "tags": ["commit"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commits",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commit/{commit}": {
+      "get": {
+        "summary": "Get a specific commit",
+        "operationId": "GetCommitBB",
+        "tags": ["commit"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "commit", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commit details",
             "content": { "application/json": {} }
           }
         }
