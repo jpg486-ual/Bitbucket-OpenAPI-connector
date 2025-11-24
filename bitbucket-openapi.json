@@ -258,6 +258,43 @@
           }
         }
       }
+    },
+    "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments": {
+      "get": {
+        "summary": "List commit comments",
+        "operationId": "listCommitCommentsBB",
+        "tags": ["commit", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "commit", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commit comments",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments/{comment_id}": {
+      "get": {
+        "summary": "Get commit comment",
+        "operationId": "getCommitCommentBB",
+        "tags": ["commit", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "commit", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "comment_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commit comment",
+            "content": { "application/json": {} }
+          }
+        }
+      }
     }
   }
 }
