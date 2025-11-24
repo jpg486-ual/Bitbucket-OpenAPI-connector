@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Bitbucket Cloud Read-Only API",
+    "version": "1.0.0",
+    "description": "Connector for Bitbucket Cloud with read-only operations using API token."
+  },
+  "servers": [
+    { "url": "https://api.bitbucket.org/2.0" }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "Use your Bitbucket email as username and API token as password."
+      }
+    }
+  },
+  "security": [
+    { "basicAuth": [] }
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "summary": "Get current user info",
+        "tags": ["account"],
+        "responses": {
+          "200": {
+            "description": "User info",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/workspaces": {
+      "get": {
+        "summary": "List workspaces",
+        "tags": ["workspace"],
+        "responses": {
+          "200": {
+            "description": "Workspaces",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}": {
+      "get": {
+        "summary": "List repositories in a workspace",
+        "tags": ["repository"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Repositories",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/pullrequests": {
+      "get": {
+        "summary": "List pull requests",
+        "tags": ["pullrequest"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pull requests",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues": {
+      "get": {
+        "summary": "List issues",
+        "tags": ["issue"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issues",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/pipelines": {
+      "get": {
+        "summary": "List pipelines",
+        "tags": ["pipeline"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pipelines",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    }
+  }
+}
