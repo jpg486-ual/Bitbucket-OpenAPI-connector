@@ -2,7 +2,6 @@
 
 Este repositorio contiene un conector personalizado para operar sobre la API REST de Bitbucket Cloud. El objetivo principal es facilitar la integración de Bitbucket Cloud mediante funciones específicas.
 
-## Uso
 - Permite realizar operaciones básicas sobre la API REST de Bitbucket Cloud.
 
 ## Uso
