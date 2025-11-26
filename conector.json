@@ -300,6 +300,23 @@
           }
         }
       }
+    },
+    "/repositories/{workspace}/{repo_slug}": {
+      "get": {
+        "summary": "Get repository details",
+        "operationId": "getRepositoryDetailsBB",
+        "tags": ["repository"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Repository details",
+            "content": { "application/json": {} }
+          }
+        }
+      }
     }
   }
 }
