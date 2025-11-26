@@ -21,6 +21,281 @@
     { "basicAuth": [] }
   ],
   "paths": {
+    "/user": {
+      "get": {
+        "summary": "Get current user info",
+        "operationId": "getCurrentUserBB",
+        "tags": ["account"],
+        "responses": {
+          "200": {
+            "description": "User info",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/workspaces": {
+      "get": {
+        "summary": "List workspaces",
+        "operationId": "listWorkspacesBB",
+        "tags": ["workspace"],
+        "responses": {
+          "200": {
+            "description": "Workspaces",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}": {
+      "get": {
+        "summary": "List repositories in a workspace",
+        "operationId": "listReposWorkspaceBB",
+        "tags": ["repository"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Repositories",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/pullrequests": {
+      "get": {
+        "summary": "List pull requests",
+        "operationId": "listPullRequestBB",
+        "tags": ["pullrequest"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pull requests",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues": {
+      "get": {
+        "summary": "List issues",
+        "operationId": "listIssuesBB",
+        "tags": ["issue"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issues",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}": {
+      "get": {
+        "summary": "Get issue details",
+        "operationId": "getIssueBB",
+        "tags": ["issue"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue details",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/attachments": {
+      "get": {
+        "summary": "List issue attachments",
+        "operationId": "listIssueAttachmentsBB",
+        "tags": ["issue", "attachment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue attachments",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/attachments/{path}": {
+      "get": {
+        "summary": "Get issue attachment",
+        "operationId": "getIssueAttachmentBB",
+        "tags": ["issue", "attachment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } },
+          { "name": "path", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue attachment",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/changes": {
+      "get": {
+        "summary": "List issue changes",
+        "operationId": "listIssueChangesBB",
+        "tags": ["issue", "change"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue changes",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/comments": {
+      "get": {
+        "summary": "List issue comments",
+        "operationId": "listIssueCommentsBB",
+        "tags": ["issue", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue comments",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/issues/{issue_id}/comments/{comment_id}": {
+      "get": {
+        "summary": "Get issue comment",
+        "operationId": "getIssueCommentBB",
+        "tags": ["issue", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "issue_id", "in": "path", "required": true, "schema": { "type": "integer" } },
+          { "name": "comment_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue comment",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/pipelines": {
+      "get": {
+        "summary": "List pipelines",
+        "tags": ["pipeline"],
+        "operationId": "listPipelinesBB",
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pipelines",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commits": {
+      "get": {
+        "summary": "List commits in a repository",
+        "operationId": "getCommitsRepoBB",
+        "tags": ["commit"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commits",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commit/{commit}": {
+      "get": {
+        "summary": "Get a specific commit",
+        "operationId": "GetCommitBB",
+        "tags": ["commit"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "commit", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commit details",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments": {
+      "get": {
+        "summary": "List commit comments",
+        "operationId": "listCommitCommentsBB",
+        "tags": ["commit", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "commit", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commit comments",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
+    "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments/{comment_id}": {
+      "get": {
+        "summary": "Get commit comment",
+        "operationId": "getCommitCommentBB",
+        "tags": ["commit", "comment"],
+        "parameters": [
+          { "name": "workspace", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "repo_slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "commit", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "comment_id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Commit comment",
+            "content": { "application/json": {} }
+          }
+        }
+      }
+    },
     "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments": {
       "get": {
         "summary": "List commit comments",
